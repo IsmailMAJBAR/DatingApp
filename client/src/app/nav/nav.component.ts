@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  isShown: boolean = false;
   model: any = {};
 
   constructor(public accountService: AccountService, private router: Router,
@@ -23,12 +23,8 @@ export class NavComponent implements OnInit {
   login() {
     this.accountService.login(this.model)
       .subscribe(response => {
-        this.router.navigateByUrl('/members');
+        this.router.navigateByUrl('/');
       }
-        // , error => {
-        //   console.log("🚀 ~ file: nav.component.ts ~ line 25 ~ NavComponent ~ login ~ error", error);
-        //   this.toastr.error(error.error);
-        // }
       );
   }
   logout() {

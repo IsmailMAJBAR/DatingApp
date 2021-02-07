@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,700);
+
+$enable-grid-classes:false;
+$primary:#f6648C;
+$secondary:#ECEFF1;
+$success:#64F578;
+$danger:#DE5A50;
+$info:#587CF5;
+$warning:#F5D57D;
+$light:#eAeAeA;
+$dark:#223322;
+@import "bootstrap";
+
+// Add SASS theme customizations here..
+html {font-size: 0.8rem;}@include media-breakpoint-up(sm) {html {font-size: .9rem;}}@include media-breakpoint-up(md) {html {font-size: 1rem;}}@include media-breakpoint-up(lg) {html {font-size: 1.1rem;}}
+
+
+@import "node_modules/bootstrap/scss/bootstrap";

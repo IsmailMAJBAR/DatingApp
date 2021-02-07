@@ -1,10 +1,15 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Dating App</a>
-    <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/">Dating App</a>
+  <button #navbarToggler class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" (click)="isShown = !isShown"
+    [attr.aria-expanded]="isShown" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarSupportedContent">
+    <ul class="nav navbar-nav  mr-auto">
       <ng-container *ngIf="accountService.currentUsers$ | async">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/members" routerLinkActive="active">Matches</a>
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
@@ -17,8 +22,7 @@
         <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
       </li>
     </ul>
-
-    <div class="dropdown" *ngIf="(accountService.currentUsers$ | async) as user" dropdown>
+    <div class="dropdown  ml-auto" *ngIf="(accountService.currentUsers$ | async) as user" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{ user.username | titlecase }}</a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
@@ -26,15 +30,14 @@
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </div>
     </div>
-
     <form *ngIf="(accountService.currentUsers$ | async)===null" #loginForm="ngForm" (ngSubmit)="login()"
-      autocomplete="off" class="d-flex">
+      autocomplete="off" class="d-flex ml-auto">
       <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
         placeholder="UserName">
       <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="Password"
         placeholder="Password">
-
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+      <button class="btn btn-success mr-sm-2" type="submit">Login</button>
     </form>
   </div>
+
 </nav>
